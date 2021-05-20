@@ -1,0 +1,156 @@
+body {
+  font-family: sans-serif;
+  font-size: 18px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  align-items: center;
+  background: rgb(104, 104, 209);
+  color: #fefefe;
+  display: flex;
+  height: 40px;
+  justify-content: space-between;
+}
+
+header h3 {
+  margin-left: 8px;
+}
+
+header .cart {
+  background: rgb(82, 82, 194);
+  border: none;
+  color: white;
+  cursor: pointer;
+  height: 100%;
+  padding: 8px;
+  outline: none;
+}
+
+header .cart-content {
+  background: white;
+  border-bottom: 1px solid black;
+  border-bottom-left-radius: 14px;
+  border-bottom-right-radius: 14px;
+  border-left: 1px solid black;
+  color: black;
+  padding: 16px;
+  position: absolute;
+  right: 0;
+  top: 40px;
+}
+
+header .cart-content .cart-content__product {
+  align-items: center;
+  background: rgb(129, 129, 129, 0.2);
+  border-radius: 8px;
+  display: flex;
+  margin-bottom: 4px;
+  padding: 8px;
+}
+
+header .cart-content .cart-content__product.bg-gray {
+  background: rgb(129, 129, 129, 0.4);
+}
+
+header .cart-content .cart-content__product img {
+  width: 50px;
+}
+
+main {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 16px;
+}
+
+main .product {
+  display: grid;
+  grid-template-columns: 0.2fr 0.8fr;
+}
+
+main .product .product__thumbnails {
+  width: 90px;
+}
+
+main .product .product__thumbnails .thumb {
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 90px;
+  margin-bottom: 8px;
+  width: 100%;
+}
+
+main .product .product__thumbnails .thumb.active {
+  border-bottom: 1px solid rgb(82, 82, 194);
+}
+
+main .description h4 {
+  display: inline-block;
+  font-size: 24px;
+}
+
+main .description .description__status {
+  color: rgb(129, 129, 129);
+  font-size: 16px;
+  font-weight: lighter;
+}
+
+main .description .description__price {
+  color: rgb(104, 104, 209);
+  font-weight: bold;
+}
+
+main .description .description__content {
+  margin-top: 8px;
+}
+
+main .description .discount {
+  margin: 8px 0 8px 0;
+}
+
+main .description .discount span {
+  font-size: 14px;
+  margin-right: 8px;
+}
+
+main .description .discount input {
+  border: 1px solid #616161;
+  border-radius: 4px;
+  padding: 8px;
+}
+
+main .description button {
+  background: rgb(104, 104, 209);
+  border: none;
+  border-radius: 8px;
+  color: #fefefe;
+  font-size: 18px;
+  padding: 8px;
+}
+
+main .description button:disabled {
+  background: rgb(159, 159, 228);
+}
+
+.badge {
+  border-radius: 8px;
+  color: white;
+  font-size: 14px;
+  font-weight: normal;
+  margin-right: 4px;
+  padding: 8px;
+  vertical-align: text-top;
+}
+
+.badge.new {
+  background-color: rgb(103, 172, 13);
+}
+
+.badge.offer {
+  background-color: rgb(197, 107, 33);
+}
