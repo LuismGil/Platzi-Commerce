@@ -40,7 +40,7 @@ app.component('product', {
     <p class="description_status" v-else>
       No products available
     </p>
-    <p class="description__price">
+    <p class="description__price" :style="{ color: price_color }">
       {{ product.name }} - $ {{ new Intl.NumberFormat("en-EN").format(product.price)}}
     </p>
     <p class="description__content">
@@ -70,7 +70,8 @@ app.component('product', {
   data() {
     return {
       activeImage: 0,
-      discountCodes: ["PLATZI20", "IOSAMUEL"]
+      discountCodes: ["PLATZI20", "IOSAMUEL"],
+      price_color: "rgb(104, 104, 209)"
     };
   },
   methods: {
@@ -83,6 +84,16 @@ app.component('product', {
     },
     sendToCart() {
       this.$emit("sendtocart", this.product);
+    }
+  },
+  watch: {
+    activeImage(value, oldValue) {
+      console.log(value, oldValue);
+    },
+    "product.stock"(stock) {
+      if (stock <= 1) {
+        this.price_color = "rgb(188, 30, 67)"
+      }
     }
   }
 });

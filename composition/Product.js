@@ -40,7 +40,7 @@ app.component("product", {
     <p class="description_status" v-else>
       No products available
     </p>
-    <p class="description__price">
+    <p class="description__price" :style="{ color: price_color }">
       {{ product.name }} - $ {{ new Intl.NumberFormat("en-EN").format(product.price)}}
     </p>
     <p class="description__content">
@@ -68,7 +68,8 @@ app.component("product", {
   emits: ["sendtocart"],
   setup(props, context) {
     const productState = reactive({
-      activeImage: 0
+      activeImage: 0,
+      price_color: "rgb(104, 104, 209)"
     });
 
     function sendToCart() {
@@ -83,6 +84,20 @@ app.component("product", {
         discountCodes.value.splice(discountCodeIndex, 1);
       }
     }
+
+    watch(
+      () => productState.activeImage,
+      (val, oldValue) => {
+        console.log(val, oldValue);
+    });
+
+    watch(
+      () => props.product.stock, 
+      (stock) => {
+      if (stock <= 1) {
+        productState.price_color = "rgb(188, 30, 67)"
+      }
+    })
 
     return {
       ...toRefs(productState),
