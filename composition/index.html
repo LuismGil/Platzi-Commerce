@@ -43,96 +43,7 @@
     const app = createApp({
       
       setup() {
-        const products = ref([
-            {
-              name: "Camera",
-              price: 450_000,
-              stock: 3,
-              content: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt
-                atque dolorum corporis, reiciendis eaque temporibus quod magnam amet
-                ea natus delectus? Aut placeat ipsam minus labore voluptas. Porro,
-                vel aliquid!`,
-              images: [
-                {
-                  image: "./images/camara.jpg",
-                  thumbnail: "./images/camara-thumb.jpg"
-                },
-                {
-                  image: "./images/camara-2.jpg",
-                  thumbnail: "./images/camara-2-thumb.jpg"
-                }
-              ],
-              offer: true,
-              new: true,
-              quantity: 1
-            },
-            {
-              name: "Microphone",
-              price: 950_000,
-              stock: 3,
-              content: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt
-                atque dolorum corporis, reiciendis eaque temporibus quod magnam amet
-                ea natus delectus? Aut placeat ipsam minus labore voluptas. Porro,
-                vel aliquid!`,
-              images: [
-                {
-                  image: "./images/camara.jpg",
-                  thumbnail: "./images/camara-thumb.jpg"
-                },
-                {
-                  image: "./images/camara-2.jpg",
-                  thumbnail: "./images/camara-2-thumb.jpg"
-                }
-              ],
-              offer: true,
-              new: true,
-              quantity: 1
-            },
-            {
-              name: "Camera PL",
-              price: 250_000,
-              stock: 2,
-              content: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt
-                atque dolorum corporis, reiciendis eaque temporibus quod magnam amet
-                ea natus delectus? Aut placeat ipsam minus labore voluptas. Porro,
-                vel aliquid!`,
-              images: [
-                {
-                  image: "./images/camara.jpg",
-                  thumbnail: "./images/camara-thumb.jpg"
-                },
-                {
-                  image: "./images/camara-2.jpg",
-                  thumbnail: "./images/camara-2-thumb.jpg"
-                }
-              ],
-              offer: true,
-              new: true,
-              quantity: 1
-            },
-            {
-              name: "Phones PL",
-              price: 750_000,
-              stock: 5,
-              content: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt
-                atque dolorum corporis, reiciendis eaque temporibus quod magnam amet
-                ea natus delectus? Aut placeat ipsam minus labore voluptas. Porro,
-                vel aliquid!`,
-              images: [
-                {
-                  image: "./images/camara.jpg",
-                  thumbnail: "./images/camara-thumb.jpg"
-                },
-                {
-                  image: "./images/camara-2.jpg",
-                  thumbnail: "./images/camara-2-thumb.jpg"
-                }
-              ],
-              offer: true,
-              new: true,
-              quantity: 1
-            }
-          ]);
+        const products = ref([]);
        
          const cartState = reactive({
            cartOpen: false,
@@ -176,6 +87,11 @@
     //       }, 0)
     // })
 
+    fetch("https://my-json-server.typicode.com/iosamuel/demo/products")
+    .then(res => res.json())
+    .then(data => {
+      products.value = data;
+    });
          return {
            ...toRefs(cartState),
 
